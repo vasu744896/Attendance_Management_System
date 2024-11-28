@@ -1,0 +1,181 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+header {
+	background-color: #5d5af3;
+	color: #fff;
+	padding: 10px 0;
+}
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+}
+.img{
+	width: min-content;
+}
+.logo {
+	font-size: 40px;
+	font-weight: bold;
+}
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+nav ul li {
+	margin-right: 20px;
+}
+nav ul li:last-child {
+	margin-right: 0;
+}
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	transition: color 0.3s;
+}
+nav ul li a:hover {
+	color: #ffcc00;
+}
+.product-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 20px;
+}
+.product {
+	width: 250px;
+	margin-bottom: 30px;
+	padding: 100px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	text-align: center;
+	transition: box-shadow 0.3s;
+	color: #f8f7fa;
+	background-color: #ff6600;
+}
+.product:hover {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 5);
+}
+.product h2 {
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+.container{
+	font-size: large;   
+}
+.table{
+	color: #5d5af3;
+	align-items: center;
+}
+.success{
+	background: #ff6600;
+	align-items: flex-end;
+}
+.message h1 {
+	 font-size: x-large;
+}
+label {
+	font-size: x-large;
+	color: #680760;
+	text-align: center;
+	padding: 0;
+}
+.submit-btn{
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+	align-items: center;
+}
+
+.submit-btn:hover{
+	background-color: #0056b3;
+	transform: translateY(-2px);
+}
+
+.submit-btn:active{
+	background-color: #003d80;
+	transform:translateY(0);
+}
+
+.submit-btn:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/*--------------- media query--------------------------*/
+
+/* Small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+    /* Styles for small screens */
+    body {
+        background-color: #eccfb2;
+        font-size: 14px;
+        padding: 10px;
+    }
+    header {
+        font-size: 1.2em;
+    }
+}
+
+/* Medium devices (portrait tablets and large phones, 600px to 768px) */
+@media (min-width: 301px) and (max-width: 768px) {
+    /* Styles for medium screens */
+    body {
+        background-color: #eccfb2;
+        font-size: 16px;
+        padding: 15px;
+    }
+    header {
+        font-size: 5.5em;
+    }
+}
+
+/* Large devices (landscape tablets and standard desktops, 769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Styles for large screens */
+    body {
+        background-color: #eccfb2;
+        font-size: 18px;
+        padding: 20px;
+    }
+    header {
+        font-size: 1.8em;
+    }
+}
+
+/* Extra large devices (large desktops, 1025px and up) */
+@media (min-width: 1025px) {
+    /* Styles for extra large screens */
+    body {
+        background-color: #eccfb2;
+        font-size: 20px;
+        padding: 25px;
+    }
+    header {
+        font-size: 2em;
+    }
+}
+
+/* High-resolution devices (Retina) */
+@media only screen and (min-device-pixel-ratio: 2) {
+    /* Styles for high-resolution devices */
+    body {
+        font-size: 1.5em; /* Increase font size for better readability on high-resolution screens */
+    }
+    img {
+        width: 100%; /* Ensure images scale correctly */
+    }
+}

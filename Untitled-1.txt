@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAM Cricket Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .update-button {
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="date"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="image/logo.png" width="125px" alt="SAM Cricket Academy Logo">
+            <div class="logo">SAM Cricket Academy</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="view.php">Attendance</a></li>
+                    <li><a href="password.html">Admin</a></li>
+                    <li><a href="index.php">Records</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Attendance List</h1>
+        <table>
+            <tr>
+                <th>Student Name</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <?php
+            // Database connection (adjust credentials as needed)
+            $conn = new mysqli("localhost", "root", "", "attendance");
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Fetch attendance records from the database
+            $sql = "SELECT student_name, date, attendance FROM students"; // Adjust table name as needed
+            $result = $conn->query($sql);
+
+            // Check if any rows are returned
+            if ($result && $result->num_rows > 0) {
+                // Output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    echo '<tr>';
+                    echo '<td>' . htmlspecialchars($row['student_name']) . '</td>';
+                    echo '<td>' . htmlspecialchars($row['date']) . '</td>';
+                    echo '<td>' . htmlspecialchars($row['attendance']) . '</td>';
+                    echo '<td>
+                            <form action="update_attendance.php" method="post">
+                                <input type="hidden" name="student_name" value="' . htmlspecialchars($row['student_name']) . '">
+                                <input type="hidden" name="date" value="' . htmlspecialchars($row['date']) . '">
+                                <select name="attendance" required>
+                                    <option value="Present" ' . ($row['attendance'] === 'Present' ? 'selected' : '') . '>Present</option>
+                                    <option value="Absent" ' . ($row['attendance'] === 'Absent' ? 'selected' : '') . '>Absent</option>
+                                </select>
+                                <input type="submit" value="Update" class="update-button">
+                            </form>
+                          </td>';
+                    echo '</tr>';
+                }
+            } else {
+                echo '<tr><td colspan="4">No attendance records found.</td></tr>';
+            }
+
+            // Close the database connection
+            $conn->close();
+            ?>
+        </table>
+    </main>
+</body>
+</html>

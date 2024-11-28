@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAM Cricket Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="image/logo.png" width="125px" alt="SAM Cricket Academy Logo">
+            <div class="logo">SAM Cricket Academy</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="attendance.php">Attendance</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="index.php">Records</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="table">
+            <h2>Registration Form</h2>
+            <form action="register.php" method="post">
+                <label for="username">Student Name:</label><br>
+                <input type="text" id="username" name="username" required autocomplete="off"><br><br>
+
+                <label for="pnum">Phone Number:</label><br>
+                <input type="text" id="pnum" name="pnum" required autocomplete="off"><br><br>
+
+                <label>Class:</label><br>
+                <input type="radio" name="class" value="Regular" required> Regular<br>
+                <input type="radio" name="class" value="Weekend"> Weekend<br><br>
+
+                <label for="dob">Date of Birth:</label><br>
+                <input type="date" id="dob" name="dob" required autocomplete="off"><br><br>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+    
+            <h2>Delete Student</h2>
+            <form action="delete.php" method="post">
+                <label for="delete_username">Student Name to Delete:</label><br>
+                <input type="text" id="delete_username" name="delete_username" required autocomplete="off"><br><br>
+                <button type="submit" class="submit-btn">Delete</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
